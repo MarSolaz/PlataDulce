@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análisis de "Plata Dulce" (1982)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 50px;
+    }
+    #video-container {
+      margin-top: 30px;
+    }
+    iframe {
+      border: none;
+      margin-top: 20px;
+      width: 80%;
+      max-width: 800px;
+      height: 450px;
+    }
+    /* Estilo para la ventana emergente */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      padding-top: 60px;
+      text-align: center;
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      width: 80%;
+      max-width: 600px;
+    }
+    .modal-header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .modal-body {
+      margin-bottom: 20px;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+    #consignas {
+      margin-top: 30px;
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Fragmentos de "Plata Dulce" (1982)</h1>
+  
+  <!-- Ventana emergente (modal) con la sinopsis y el botón para iniciar -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-header">Sinopsis de la Trama</div>
+      <div class="modal-body">
+        <p>Carlos Bonifatti (Federico Luppi) y Rubén Molinuevo (Julio De Grazia), dos empresarios dedicados a la venta de botiquines, intentan mantener su fábrica abierta frente a los embates de la profunda política económica de desindustrialización que está llevando a cabo la última dictadura militar. Carlos se encuentra un día con un excompañero de la «colimba», Arteche (Gianni Lunadei), que le ofrece un negocio redondo. Decide entonces dejar su trabajo y dedicarse a los negocios financieros y especulativos, los cuales están en auge. Mientras tanto, Rubén se empeña en continuar con la fábrica. Al principio los hechos parecen darle la razón a Carlos, que mejora notablemente su nivel de vida: auto nuevo, casa nueva. Sin embargo, al poco tiempo se produce un hecho inesperado que cambia para siempre sus vidas.</p>
+      </div>
+      <button class="button" id="startButton">Analizar escena</button>
+    </div>
+  </div>
+
+  <!-- Contenedor donde se insertará el iframe -->
+  <div id="video-container"></div>
+
+  <!-- Consignas del ejercicio -->
+  <div id="consignas">
+    <h3>Consignas:</h3>
+    <ul>
+      <li>Analiza el tono y el mensaje principal de la publicidad.</li>
+      <li>¿Cómo influye en la percepción de la audiencia sobre la situación política?</li>
+      <li>Compara esta publicidad con otras piezas de propaganda de la época.</li>
+    </ul>
+  </div>
+
+  <script>
+    // Lista de fragmentos con sus tiempos de inicio y fin (en segundos)
+    const fragmentos = [
+        { start: 2603, end: 2687 },  // Fragmento 1: de 43:23 a 44:47
+         { start: 2278, end: 2328 },  // Fragmento 2: de 37:58 a 38:48
+        { start: 1880, end: 1933 },  // Fragmento 3: de 31:20 a 32:13
+        { start: 3143, end: 3195 },  // Fragmento 4: de 52:23 a 53:15
+        
+    ];
+
+    // Obtener el modal y el botón para iniciar
+    const modal = document.getElementById("myModal");
+    const btn = document.getElementById("startButton");
+    const span = document.getElementsByClassName("close")[0];
+
+    // Abrir la ventana emergente al cargar la página
+    window.onload = function() {
+      modal.style.display = "block";
+    }
+
+    // Cerrar la ventana emergente
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Iniciar la elección aleatoria de un fragmento de video
+    btn.onclick = function() {
+      const fragmentoAleatorio = fragmentos[Math.floor(Math.random() * fragmentos.length)];
+      const videoUrl = `https://www.youtube.com/embed/paOocfmpBLg?start=${fragmentoAleatorio.start}&end=${fragmentoAleatorio.end}`;
+
+      // Crear el iframe y agregarlo al contenedor
+      const iframe = document.createElement("iframe");
+      iframe.setAttribute("src", videoUrl);
+      iframe.setAttribute("allowfullscreen", "true");
+
+      // Insertar el iframe en el contenedor
+      document.getElementById("video-container").appendChild(iframe);
+
+      // Cerrar el modal
+      modal.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+/* Reset de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Fondo y texto general */
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #343131;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Título principal */
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #cfcdcd;
+    margin-bottom: 30px;
+  }
+  
+  /* Modal (ventana emergente) */
+  .modal {
+    display: none; /* Ocultamos el modal hasta que se necesite */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    overflow: hidden;
+    padding-top: 100px; /* Centrado vertical */
+  }
+  
+  .modal-content {
+    background-color: #111010;
+    margin: 0 auto;
+    padding: 30px;
+    max-width: 600px;
+    border-radius: 10px;
+    text-align: left;
+  }
+  
+  .modal-header {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .modal-body {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .close {
+    font-size: 1.5rem;
+    color: #ff0000;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #333;
+  }
+  
+  .button {
+    background-color: #062133;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #062133;
+  }
+  
+  /* Estilo del iframe (video) */
+  iframe {
+    width: 80%;
+    max-width: 900px;
+    height: 500px;
+    border-radius: 8px;
+    margin-top: 30px;
+  }
+  
+  /* Consignas (información adicional) */
+  #consignas {
+    background-color: #1c1c1c;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    margin: 40px auto;
+  }
+  
+  #consignas h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #851818;
+    margin-bottom: 15px;
+  }
+  
+  #consignas ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  #consignas li {
+    font-size: 1rem;
+    color: #f5f5f5;
+    margin-bottom: 10px;
+  }
+  
