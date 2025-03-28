@@ -96,7 +96,7 @@
   /* Consignas (información adicional) */
   #consignas {
     background-color: #1c1c1c;
-    padding: 20px;
+    padding: 40px;
     margin-top: 40px;
     border-radius: 10px;
     width: 90%;
@@ -107,7 +107,7 @@
   #consignas h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #851818;
+    color: #060606;
     margin-bottom: 15px;
   }
   
@@ -118,7 +118,8 @@
   
   #consignas li {
     font-size: 1rem;
-    color: #f5f5f5;
+    color: #242222;
     margin-bottom: 10px;
+    text-align:left;
   }
   
