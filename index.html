@@ -24,14 +24,13 @@
       max-width: 800px;
       height: 450px;
     }
-    /* Estilo para la ventana emergente */
     .modal {
-      display: none; 
-      position: fixed; 
-      z-index: 1; 
+      display: none;
+      position: fixed;
+      z-index: 1;
       left: 0;
       top: 0;
-      width: 100%; 
+      width: 100%;
       height: 100%;
       background-color: rgba(0,0,0,0.5);
       padding-top: 60px;
@@ -89,8 +88,8 @@
 <body>
 
   <h1>Fragmentos de "Plata Dulce" (1982)</h1>
-  
-  <!-- Ventana emergente (modal) con la sinopsis y el botón para iniciar -->
+
+  <!-- Modal con sinopsis -->
   <div id="myModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -102,56 +101,64 @@
     </div>
   </div>
 
-  <!-- Contenedor donde se insertará el iframe -->
+  <!-- Contenedor para el video -->
   <div id="video-container"></div>
 
-  <!-- Consignas del ejercicio -->
+  <!-- Botón para reabrir la sinopsis -->
+  <div style="margin-top: 20px;">
+    <button class="button" id="volverAbrirModal">Volver a leer sinopsis</button>
+  </div>
+
+  <!-- Consignas -->
   <div id="consignas">
     <h3>Consignas:</h3>
     <ul>
       <li>Relacione la escena de la película con la política económica de la última dictadura militar. Para ello, tenga en cuenta tanto políticas económicas (liberalización económica, reforma financiera, tipo de cambio, apertura de importaciones, etc) como su impacto o consecuencias (proceso de desindustrialización, "plata dulce", especulación financiera, etc.). Discutan en grupo y tomen nota de sus conclusiones.</li>
+      <br>
+      <li>¿Qué personajes aparecen y qué rol cumplen en la escena en relación con la economía?<br><br>
+        ¿Se menciona explícitamente algún fenómeno económico o se sugiere de manera indirecta?<br><br>
+        ¿Cómo se relaciona la actitud de los personajes con el contexto económico de la época?</li>
     </ul>
   </div>
 
   <script>
-    // Lista de fragmentos con sus tiempos de inicio y fin (en segundos)
     const fragmentos = [
-        { start: 2603, end: 2687 },  // Fragmento 1: de 43:23 a 44:47
-         { start: 2278, end: 2328 },  // Fragmento 2: de 37:58 a 38:48
-        { start: 1880, end: 1933 },  // Fragmento 3: de 31:20 a 32:13
-        { start: 3143, end: 3195 },  // Fragmento 4: de 52:23 a 53:15
-        
+      { start: 2603, end: 2687 },
+      { start: 2278, end: 2328 },
+      { start: 1880, end: 1933 },
+      { start: 3143, end: 3195 }
     ];
 
-    // Obtener el modal y el botón para iniciar
     const modal = document.getElementById("myModal");
     const btn = document.getElementById("startButton");
     const span = document.getElementsByClassName("close")[0];
+    const volverBtn = document.getElementById("volverAbrirModal");
 
-    // Abrir la ventana emergente al cargar la página
-    window.onload = function() {
+    window.onload = function () {
       modal.style.display = "block";
     }
 
-    // Cerrar la ventana emergente
-    span.onclick = function() {
+    span.onclick = function () {
       modal.style.display = "none";
     }
 
-    // Iniciar la elección aleatoria de un fragmento de video
-    btn.onclick = function() {
-      const fragmentoAleatorio = fragmentos[Math.floor(Math.random() * fragmentos.length)];
-      const videoUrl = `https://www.youtube.com/embed/paOocfmpBLg?start=${fragmentoAleatorio.start}&end=${fragmentoAleatorio.end}`;
+    volverBtn.onclick = function () {
+      modal.style.display = "block";
+    }
 
-      // Crear el iframe y agregarlo al contenedor
+    btn.onclick = function () {
+      const fragmentoAleatorio = fragmentos[Math.floor(Math.random() * fragmentos.length)];
+      const videoId = "WHie3rPHXps";
+      const videoUrl = `https://www.youtube.com/embed/${videoId}?start=${fragmentoAleatorio.start}&end=${fragmentoAleatorio.end}&autoplay=1`;
+
       const iframe = document.createElement("iframe");
       iframe.setAttribute("src", videoUrl);
       iframe.setAttribute("allowfullscreen", "true");
 
-      // Insertar el iframe en el contenedor
-      document.getElementById("video-container").appendChild(iframe);
+      const container = document.getElementById("video-container");
+      container.innerHTML = ""; // Limpia el anterior
+      container.appendChild(iframe);
 
-      // Cerrar el modal
       modal.style.display = "none";
     }
   </script>
