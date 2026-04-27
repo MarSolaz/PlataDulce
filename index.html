@@ -1,90 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Análisis de "Plata Dulce" (1982)</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4f4f4;
       text-align: center;
+      color: #333;
+      margin: 0;
+      padding: 20px;
     }
     h1 {
-      margin-top: 50px;
+      margin-top: 30px;
+      color: #2c3e50;
     }
     #video-container {
-      margin-top: 30px;
+      margin-top: 20px;
+      min-height: 450px;
     }
     iframe {
-      border: none;
-      margin-top: 20px;
-      width: 80%;
+      border: 4px solid #fff;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+      width: 90%;
       max-width: 800px;
       height: 450px;
+      border-radius: 8px;
     }
+    /* Estilos del Modal */
     .modal {
       display: none;
       position: fixed;
-      z-index: 1;
+      z-index: 100;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      padding-top: 60px;
-      text-align: center;
+      background-color: rgba(0,0,0,0.7);
     }
     .modal-content {
       background-color: #fff;
-      margin: 5% auto;
-      padding: 20px;
+      margin: 10% auto;
+      padding: 30px;
       width: 80%;
       max-width: 600px;
+      border-radius: 12px;
+      position: relative;
     }
     .modal-header {
       font-size: 24px;
       font-weight: bold;
-      margin-bottom: 20px;
-    }
-    .modal-body {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      color: #1a5276;
     }
     .close {
+      position: absolute;
+      right: 20px;
+      top: 10px;
       color: #aaa;
-      float: right;
       font-size: 28px;
       font-weight: bold;
-    }
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
       cursor: pointer;
     }
+    .close:hover { color: #000; }
+
+    /* Botones */
     .button {
-      background-color: #4CAF50;
+      background-color: #27ae60;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 25px;
       font-size: 16px;
       border: none;
       cursor: pointer;
       border-radius: 5px;
+      transition: background 0.3s;
+      margin: 10px;
     }
-    .button:hover {
-      background-color: #45a049;
-    }
+    .button:hover { background-color: #1e8449; }
+    
     #consignas {
-      margin-top: 30px;
-      background-color: #f0f0f0;
-      padding: 20px;
-      border-radius: 8px;
-      width: 80%;
-      max-width: 600px;
-      margin: 30px auto;
+      margin-top: 40px;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
       text-align: left;
+      box-shadow: 0px 2px 10px rgba(0,0,0,0.05);
+      border-left: 5px solid #27ae60;
     }
+    ul { line-height: 1.6; }
+    li { margin-bottom: 15px; }
   </style>
 </head>
 <body>
@@ -94,73 +103,75 @@
   <div id="myModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <div class="modal-header">Sinopsis de la Trama</div>
+      <div class="modal-header">Contexto de la Obra</div>
       <div class="modal-body">
-        <p>Tras la victoria de Argentina en el mundial 78, Carlos Bonifatti (Federico Luppi) y Rubén Molinuevo (Julio De Grazia), son dos empresarios dedicados a la venta de botiquines que intentan mantener su fábrica abierta pese a la baja de ventas. Carlos se encuentra un día con un excompañero de la «colimba», Arteche (Gianni Lunadei), que le ofrece un negocio redondo.</p>
+        <p>Tras la victoria en el Mundial 78, Carlos Bonifatti (Federico Luppi) y Rubén Molinuevo (Julio De Grazia) intentan sostener su fábrica de botiquines. La aparición de Arteche y la promesa de "negocios redondos" marca el inicio de una transición desde la producción industrial hacia la especulación financiera típica de la época.</p>
       </div>
-      <button class="button" id="startButton">Analizar escena</button>
+      <button class="button" id="startButton">¡Comenzar Análisis!</button>
     </div>
   </div>
 
-  <div id="video-container"></div>
+  <div id="video-container">
+    <p style="color: #777;">Haz clic en el botón superior para cargar una escena aleatoria.</p>
+  </div>
 
   <div style="margin-top: 20px;">
-    <button class="button" id="volverAbrirModal">Volver a leer sinopsis</button>
+    <button class="button" style="background-color: #2980b9;" id="volverAbrirModal">Leer Sinopsis</button>
   </div>
 
   <div id="consignas">
-    <h3>Consignas:</h3>
+    <h3>Consignas para el aula:</h3>
     <ul>
-      <li>Relacione la escena de la película con la política económica de la última dictadura militar. Para ello, tenga en cuenta tanto políticas económicas (liberalización económica, reforma financiera, tipo de cambio, apertura de importaciones, etc) como su impacto o consecuencias (proceso de desindustrialización, "plata dulce", especulación financiera, etc.). Discutan en grupo y tomen nota de sus conclusiones.</li>
-      <br>
-      <li>¿Qué personajes aparecen y qué rol cumplen en la escena en relación con la economía?<br><br>
-        ¿Se menciona explícitamente algún fenómeno económico o se sugiere de manera indirecta?<br><br>
-        ¿Cómo se relaciona la actitud de los personajes con el contexto económico de la época?</li>
+      <li><strong>Análisis Económico:</strong> Relacione la escena con la política de la última dictadura militar. Considere conceptos como la liberalización financiera, la apertura de importaciones y el fenómeno de la "plata dulce".</li>
+      <li><strong>Personajes y Roles:</strong> ¿Qué posturas representan Bonifatti y Molinuevo frente al cambio de modelo económico?</li>
+      <li><strong>Impacto Social:</strong> ¿Cómo se refleja la tensión entre "producir" y "especular" en los diálogos de los personajes?</li>
     </ul>
   </div>
 
   <script>
-    // Tiempos en segundos para el nuevo video
+    // Tiempos ajustados específicamente para el video SSSCtldEkzQ
     const fragmentos = [
-      { start: 2603, end: 2687 },
-      { start: 2278, end: 2328 },
-      { start: 1880, end: 1933 },
-      { start: 3143, end: 3195 }
+      { start: 740, end: 840 },   // El encuentro con Arteche y la propuesta
+      { start: 1530, end: 1650 }, // Discusión sobre el taller y el "nuevo país"
+      { start: 2950, end: 3080 }, // El cambio de estatus y la financiera
+      { start: 5310, end: 5450 }  // Los resultados de la especulación
     ];
 
     const modal = document.getElementById("myModal");
-    const btn = document.getElementById("startButton");
-    const span = document.getElementsByClassName("close")[0];
-    const volverBtn = document.getElementById("volverAbrirModal");
+    const startBtn = document.getElementById("startButton");
+    const spanClose = document.getElementsByClassName("close")[0];
+    const openBtn = document.getElementById("volverAbrirModal");
+    const container = document.getElementById("video-container");
 
-    window.onload = function () {
-      modal.style.display = "block";
-    }
+    // Al cargar la página, mostrar el modal
+    window.onload = () => { modal.style.display = "block"; }
 
-    span.onclick = function () {
+    // Cerrar modal
+    spanClose.onclick = () => { modal.style.display = "none"; }
+    window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
+
+    // Reabrir modal
+    openBtn.onclick = () => { modal.style.display = "block"; }
+
+    // Función para cargar video aleatorio
+    startBtn.onclick = function () {
+      const frag = fragmentos[Math.floor(Math.random() * fragmentos.length)];
+      const videoId = "SSSCtldEkzQ"; // ID actualizado del nuevo enlace
+      
+      // Construcción de la URL con parámetros de inicio y fin
+      const videoUrl = `https://www.youtube.com/embed/${videoId}?start=${frag.start}&end=${frag.end}&autoplay=1&rel=0`;
+
+      container.innerHTML = `
+        <iframe 
+          src="${videoUrl}" 
+          allow="autoplay; encrypted-media" 
+          allowfullscreen>
+        </iframe>`;
+
       modal.style.display = "none";
-    }
-
-    volverBtn.onclick = function () {
-      modal.style.display = "block";
-    }
-
-    btn.onclick = function () {
-      const fragmentoAleatorio = fragmentos[Math.floor(Math.random() * fragmentos.length)];
-      // NUEVO ID DE VIDEO ACTUALIZADO
-      const videoId = "SSSCtldEkzQ"; 
-      const videoUrl = `https://www.youtube.com/embed/${videoId}?start=${fragmentoAleatorio.start}&end=${fragmentoAleatorio.end}&autoplay=1`;
-
-      const iframe = document.createElement("iframe");
-      iframe.setAttribute("src", videoUrl);
-      iframe.setAttribute("allow", "autoplay; encrypted-media");
-      iframe.setAttribute("allowfullscreen", "true");
-
-      const container = document.getElementById("video-container");
-      container.innerHTML = ""; // Limpia el anterior
-      container.appendChild(iframe);
-
-      modal.style.display = "none";
+      
+      // Scroll suave hacia el video
+      container.scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 
