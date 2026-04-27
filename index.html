@@ -80,8 +80,10 @@
       background-color: #f0f0f0;
       padding: 20px;
       border-radius: 8px;
-      width: 300px;
-      margin: 0 auto;
+      width: 80%;
+      max-width: 600px;
+      margin: 30px auto;
+      text-align: left;
     }
   </style>
 </head>
@@ -89,7 +91,6 @@
 
   <h1>Fragmentos de "Plata Dulce" (1982)</h1>
 
-  <!-- Modal con sinopsis -->
   <div id="myModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -101,15 +102,12 @@
     </div>
   </div>
 
-  <!-- Contenedor para el video -->
   <div id="video-container"></div>
 
-  <!-- Botón para reabrir la sinopsis -->
   <div style="margin-top: 20px;">
     <button class="button" id="volverAbrirModal">Volver a leer sinopsis</button>
   </div>
 
-  <!-- Consignas -->
   <div id="consignas">
     <h3>Consignas:</h3>
     <ul>
@@ -122,6 +120,7 @@
   </div>
 
   <script>
+    // Tiempos en segundos para el nuevo video
     const fragmentos = [
       { start: 2603, end: 2687 },
       { start: 2278, end: 2328 },
@@ -148,11 +147,13 @@
 
     btn.onclick = function () {
       const fragmentoAleatorio = fragmentos[Math.floor(Math.random() * fragmentos.length)];
-      const videoId = "WHie3rPHXps";
+      // NUEVO ID DE VIDEO ACTUALIZADO
+      const videoId = "SSSCtldEkzQ"; 
       const videoUrl = `https://www.youtube.com/embed/${videoId}?start=${fragmentoAleatorio.start}&end=${fragmentoAleatorio.end}&autoplay=1`;
 
       const iframe = document.createElement("iframe");
       iframe.setAttribute("src", videoUrl);
+      iframe.setAttribute("allow", "autoplay; encrypted-media");
       iframe.setAttribute("allowfullscreen", "true");
 
       const container = document.getElementById("video-container");
